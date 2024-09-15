@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const FAQForm = ({ setFaqs, setShowPopup  }) => {
+const FAQAddForm = ({ setFaqs, setShowAddFaqForm }) => {
     const [fruitName, setFruitName] = useState('');
     const [faqTitle, setFaqTitle] = useState('');
     const [faqDescription, setFaqDescription] = useState('');
@@ -27,16 +27,16 @@ const FAQForm = ({ setFaqs, setShowPopup  }) => {
 
             if (res.ok) {
                 setFaqs(prevFaqs => [data, ...prevFaqs]);
-                setShowPopup(false)
+
+                setFruitName('');
+                setFaqTitle('');
+                setFaqDescription('');
+
+                setShowAddFaqForm(false)
             }
         } catch (error) {
             console.error(error);
         }
-
-        // Clear form values
-        setFruitName('');
-        setFaqTitle('');
-        setFaqDescription('');
     }
 
     return (
@@ -71,7 +71,7 @@ const FAQForm = ({ setFaqs, setShowPopup  }) => {
                     required
                 />
                 <div className="flex gap-3">
-                    <button type="button" className="py-2 px-3 w-full rounded-xl text-white bg-red-500" onClick={() => setShowPopup(false)}>Close</button>
+                    <button type="button" className="py-2 px-3 w-full rounded-xl text-white bg-red-500" onClick={() => setShowAddFaqForm(false)}>Close</button>
                     <button type="submit" className="py-2 px-3 w-full rounded-xl text-white bg-blue-500">Add</button>
                 </div>
             </form>
@@ -79,4 +79,4 @@ const FAQForm = ({ setFaqs, setShowPopup  }) => {
     )
 }
 
-export default FAQForm;
+export default FAQAddForm;

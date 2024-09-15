@@ -62,8 +62,6 @@ def postFaq():
         error = { "error": "Please enter all the deatils to add a new FAQ." }
         return jsonify(error), 400
 
-    print(uuid.uuid4())
-
     newFaq = {
         "id": str(uuid.uuid4()),
         "fruit": fruit,
@@ -72,23 +70,44 @@ def postFaq():
     }
 
     faqs_data.insert(0, newFaq)
-    print(faqs_data)
 
     return jsonify(newFaq)
 
-# TODO
 # PUT /faqs/:id: Update a faq by ID.
+@faqs.put('<id>')
+def updateFaq(id):
+    for faq in faqs_data:
+        if faq['id'] == id:
+            if not request.is_json:
+                error = { "error": "Please provide the FAQ deatils." }
+                return jsonify(error), 400
+
+            body = request.get_json()
+
+            fruit = body.get('fruit')
+            title = body.get('title')
+            description = body.get('description')
+
+            if not fruit or not title or not description:
+                error = { "error": "Please enter all the deatils to add a new FAQ." }
+                return jsonify(error), 400
+
+            faq['fruit'] = fruit
+            faq['title'] = title
+            faq['description'] = description
+
+            return jsonify(faq)
+
+    error = {"error":"No FAQ found."}
+    return jsonify(error), 404
 
 # DELETE /faqs/:id: Delete a faq by ID.
 @faqs.delete('/<id>')
 def deleteFaq(id):
-    print(id)
     for faq in faqs_data:
-        print(faq)
         if faq['id'] == id:
             faqs_data.remove(faq)
             return jsonify(faq)
 
     error = {"error":"No FAQ found."}
     return jsonify(error), 404
-    
