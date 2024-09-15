@@ -6,6 +6,9 @@ def create_app():
     CORS(app)
 
     from .routes.faqs import faqs
+    from .routes.chat import chat
+
     app.register_blueprint(faqs, url_prefix="/api/faqs")
+    app.register_blueprint(chat, url_prefix="/api/chat")
 
     return app

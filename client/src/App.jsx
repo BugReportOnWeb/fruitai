@@ -1,8 +1,11 @@
 import { Route, Routes, useLocation } from "react-router-dom";
+
+// Pages
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import FAQPage from "./pages/FAQPage";
 import AboutPage from "./pages/AboutPage";
+import ChatPage from "./pages/ChatPage";
 
 const App = () => {
     const location = useLocation();
@@ -16,13 +19,14 @@ const App = () => {
                 path === '/faq' ||
                 path === '/about'
             ) && 'bg-gradient-to-r from-[#E0BCF3] to-[#7EE7EE] text-white'}
-            min-h-screen p-5
+            p-5 min-h-screen
         `}>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path='/faq' element={<FAQPage />} />
                 <Route path='/about' element={<AboutPage />} />
+                <Route path='/chat' element={<ChatPage />} />
             </Routes>
         </div>
     )
