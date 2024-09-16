@@ -1,5 +1,10 @@
 import { useNavigate } from "react-router-dom";
 
+import { FaFacebook } from "react-icons/fa";
+import { RiInstagramFill } from "react-icons/ri";
+import { FaPinterest } from "react-icons/fa";
+import { FaLinkedin } from "react-icons/fa";
+
 const LoginPage = () => {
     const navigate = useNavigate();
 
@@ -48,11 +53,11 @@ const LoginPage = () => {
                 <button type='submit' className="bg-blue-500 text-white py-3 rounded-md">Login</button>
             </form>
             <p>or connect with</p>
-            <div className="flex gap-4">
-                <p>f</p>
-                <p>f</p>
-                <p>f</p>
-                <p>f</p>
+            <div className="flex gap-4 text-3xl items-center">
+                <p><FaFacebook className="text-blue-700" /></p>
+                <p><RiInstagramFill className="text-blue-700 text-4xl" /></p>
+                <p><FaPinterest className="text-red-600"/></p>
+                <p><FaLinkedin className="text-blue-600" /></p>
             </div>
         </div>
     )

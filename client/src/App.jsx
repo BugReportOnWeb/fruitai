@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage";
 import FAQPage from "./pages/FAQPage";
 import AboutPage from "./pages/AboutPage";
 import ChatPage from "./pages/ChatPage";
+import TranslatePage from "./pages/TranslatePage";
 
 const App = () => {
     const location = useLocation();
@@ -27,6 +28,7 @@ const App = () => {
                 <Route path='/faq' element={<FAQPage />} />
                 <Route path='/about' element={<AboutPage />} />
                 <Route path='/chat' element={<ChatPage />} />
+                <Route path='/translate' element={<TranslatePage />} />
             </Routes>
         </div>
     )
